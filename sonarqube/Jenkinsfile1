@@ -1,6 +1,11 @@
 pipeline {
 	agent any
 	stages{
+		stage('clone'){
+			steps{
+				git 'https://github.com/git-dev98/SonarTest.git'
+			}
+		}
 		stage('scan'){
 			steps {
 			withSonarQubeEnv('sonarqube-8.6.1') {
@@ -8,5 +13,6 @@ pipeline {
 			}
 			}
 		}
+		
 	}
 }
