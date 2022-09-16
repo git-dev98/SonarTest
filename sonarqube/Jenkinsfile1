@@ -1,0 +1,12 @@
+pipeline {
+	agent any
+	stages{
+		stage('scan'){
+			steps {
+			withSonarQubeEnv(installationName:'sql') {
+			sh './mvnw clean sonar:sonar'
+			}
+			}
+		}
+	}
+}
